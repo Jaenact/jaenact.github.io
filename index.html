@@ -5,6 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaenact | Security Researcher</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="보안 문제 해결과 시스템 분석을 중심으로 경험을 쌓고 있는 보안 연구원 Jaenact의 포트폴리오">
+    <meta name="keywords" content="Security Researcher, CTF, Hacking, Cybersecurity, Jaenact">
+    <meta name="author" content="Jaenact">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Jaenact | Security Researcher">
+    <meta property="og:description" content="보안 문제 해결과 시스템 분석을 중심으로 경험을 쌓고 있는 보안 연구원">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jaenact.github.io">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jaenact | Security Researcher">
+    <meta name="twitter:description" content="보안 문제 해결과 시스템 분석을 중심으로 경험을 쌓고 있는 보안 연구원">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -12,6 +32,9 @@
 </head>
 
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
     <!-- Background Ambient Blobs -->
     <div class="ambient-light">
         <div class="blob blob-1"></div>
@@ -23,8 +46,13 @@
             <a href="#" class="logo">Jaenact</a>
             <div class="nav-links">
                 <a href="#about" class="nav-item">About</a>
+                <a href="#skills" class="nav-item">Skills</a>
                 <a href="#experience" class="nav-item">Experience</a>
-                <a href="#activities" class="nav-item">Activities</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#contact" class="nav-item">Contact</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="ph ph-moon"></i>
+                </button>
                 <a href="https://github.com/Jaenact" target="_blank" class="btn-primary magnetic-btn">
                     <i class="ph ph-github-logo"></i> GitHub
                 </a>
@@ -39,7 +67,7 @@
                     Hi, I'm <span class="text-gradient">Jaenact</span>
                 </h1>
                 <p class="fade-in-up delay-1 hero-desc">
-                    보안 문제 해결과 시스템 분석을 중심으로<br>
+                    <span class="typing-text" id="typingText"></span><br>
                     경험을 쌓고 있는 연구원입니다.<br>
                     <span class="sub-text">학습 및 연구 내용을 GitHub에 기록하고 있습니다.</span>
                 </p>
@@ -76,11 +104,58 @@
             </div>
         </section>
 
+        <section id="skills" class="section-padding bg-grey">
+            <div class="container">
+                <h2 class="section-title scroll-reveal">Skills & Tools</h2>
+                <div class="skills-grid">
+                    <div class="skill-card scroll-reveal delay-1">
+                        <i class="ph ph-terminal-window skill-icon"></i>
+                        <h3>Languages</h3>
+                        <div class="skill-tags">
+                            <span>Python</span>
+                            <span>C/C++</span>
+                            <span>JavaScript</span>
+                            <span>Bash</span>
+                        </div>
+                    </div>
+                    <div class="skill-card scroll-reveal delay-2">
+                        <i class="ph ph-bug skill-icon"></i>
+                        <h3>Security Tools</h3>
+                        <div class="skill-tags">
+                            <span>Burp Suite</span>
+                            <span>Wireshark</span>
+                            <span>IDA Pro</span>
+                            <span>Ghidra</span>
+                        </div>
+                    </div>
+                    <div class="skill-card scroll-reveal delay-3">
+                        <i class="ph ph-git-branch skill-icon"></i>
+                        <h3>Development</h3>
+                        <div class="skill-tags">
+                            <span>Git</span>
+                            <span>Docker</span>
+                            <span>Linux</span>
+                            <span>Web Dev</span>
+                        </div>
+                    </div>
+                    <div class="skill-card scroll-reveal delay-4">
+                        <i class="ph ph-brain skill-icon"></i>
+                        <h3>Focus Areas</h3>
+                        <div class="skill-tags">
+                            <span>Web Security</span>
+                            <span>Binary Analysis</span>
+                            <span>System Analysis</span>
+                            <span>CTF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="experience" class="section-padding">
             <div class="container">
                 <h2 class="section-title scroll-reveal">Experience</h2>
                 <div class="bento-grid">
-                    <!-- CPS LAB -->
                     <div class="bento-item item-large scroll-reveal tilt-card">
                         <div class="bento-content">
                             <span class="tag">Research</span>
@@ -93,7 +168,6 @@
                         </div>
                     </div>
 
-                    <!-- Pay1oad -->
                     <div class="bento-item item-medium scroll-reveal tilt-card">
                         <div class="bento-content">
                             <span class="tag">Club</span>
@@ -106,7 +180,6 @@
                         </div>
                     </div>
 
-                    <!-- Private Team -->
                     <div class="bento-item item-medium scroll-reveal tilt-card">
                         <div class="bento-content">
                             <span class="tag">Team</span>
@@ -121,11 +194,54 @@
             </div>
         </section>
 
+        <section id="projects" class="section-padding bg-grey">
+            <div class="container">
+                <h2 class="section-title scroll-reveal">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card scroll-reveal magnetic-item" data-project="1">
+                        <div class="project-header">
+                            <i class="ph ph-github-logo"></i>
+                            <span class="project-status">Active</span>
+                        </div>
+                        <h3>Security Research</h3>
+                        <p>보안 취약점 분석 및 연구 내용을 정리한 저장소</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Security</span>
+                        </div>
+                    </div>
+                    <div class="project-card scroll-reveal magnetic-item delay-1" data-project="2">
+                        <div class="project-header">
+                            <i class="ph ph-github-logo"></i>
+                            <span class="project-status">Active</span>
+                        </div>
+                        <h3>CTF Writeups</h3>
+                        <p>참여한 CTF 대회의 풀이 및 학습 기록</p>
+                        <div class="project-tech">
+                            <span>Writeups</span>
+                            <span>CTF</span>
+                        </div>
+                    </div>
+                    <div class="project-card scroll-reveal magnetic-item delay-2" data-project="3">
+                        <div class="project-header">
+                            <i class="ph ph-github-logo"></i>
+                            <span class="project-status">Archive</span>
+                        </div>
+                        <h3>Security Tools</h3>
+                        <p>보안 분석을 위한 자동화 도구 모음</p>
+                        <div class="project-tech">
+                            <span>Automation</span>
+                            <span>Tools</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="activities" class="section-padding">
             <div class="container">
                 <h2 class="section-title scroll-reveal">Activities & Awards</h2>
                 <div class="grid-2-col">
-                    <!-- Activities Column -->
                     <div class="col-group">
                         <h3 class="col-title scroll-reveal"><i class="ph ph-trophy"></i> Activities</h3>
                         <ul class="activity-list">
@@ -147,7 +263,6 @@
                         </ul>
                     </div>
 
-                    <!-- CTF Column -->
                     <div class="col-group">
                         <h3 class="col-title scroll-reveal"><i class="ph ph-flag-banner"></i> CTF</h3>
                         <ul class="activity-list">
@@ -163,17 +278,60 @@
                 </div>
             </div>
         </section>
+
+        <section id="contact" class="section-padding bg-grey">
+            <div class="container">
+                <h2 class="section-title scroll-reveal">Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-card scroll-reveal tilt-card" id="emailCard">
+                        <i class="ph ph-envelope-simple contact-icon"></i>
+                        <h3>Email</h3>
+                        <p id="emailText">contact@jaenact.dev</p>
+                        <button class="copy-btn" id="copyEmail">
+                            <i class="ph ph-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div class="contact-card scroll-reveal tilt-card delay-1">
+                        <i class="ph ph-github-logo contact-icon"></i>
+                        <h3>GitHub</h3>
+                        <p>@Jaenact</p>
+                        <a href="https://github.com/Jaenact" target="_blank" class="contact-link">
+                            Visit <i class="ph ph-arrow-up-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
         <div class="container">
             <p>&copy; 2025 Jaenact. All rights reserved.</p>
             <div class="social-links">
-                <a href="https://github.com/Jaenact" target="_blank" class="magnetic-link"><i
-                        class="ph ph-github-logo"></i> GitHub</a>
+                <a href="https://github.com/Jaenact" target="_blank" class="magnetic-link">
+                    <i class="ph ph-github-logo"></i> GitHub
+                </a>
             </div>
         </div>
     </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="ph ph-check-circle"></i>
+        <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="ph ph-x"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be injected by JS -->
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
