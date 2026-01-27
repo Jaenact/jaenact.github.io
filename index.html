@@ -7,194 +7,323 @@
     <title>Jaenact | Security Researcher</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="보안 문제 해결과 시스템 분석을 중심으로 경험을 쌓고 있는 보안 연구원 Jaenact의 포트폴리오">
-    <meta name="keywords" content="Security Researcher, CTF, Hacking, Cybersecurity, Jaenact">
+    <meta name="description" content="CVE 연구와 시스템 보안 분석을 중심으로 활동하는 보안 연구원 Jaenact의 포트폴리오">
+    <meta name="keywords" content="Security Researcher, CVE, CTF, Cybersecurity, Vulnerability Research, Jaenact">
     <meta name="author" content="Jaenact">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Jaenact | Security Researcher">
-    <meta property="og:description" content="보안 문제 해결과 시스템 분석을 중심으로 경험을 쌓고 있는 보안 연구원">
+    <meta property="og:description" content="CVE 연구와 시스템 보안 분석을 중심으로 활동하는 보안 연구원">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jaenact.github.io">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Jaenact | Security Researcher">
-    <meta name="twitter:description" content="보안 문제 해결과 시스템 분석을 중심으로 경험을 쌓고 있는 보안 연구원">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <!-- Fonts -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress"></div>
+    <!-- Background Grid -->
+    <div class="bg-grid"></div>
 
-    <!-- Background Ambient Blobs -->
-    <div class="ambient-light">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
+    <!-- HUD Decorations -->
+    <div class="hud-decoration hud-tl">
+        <div class="hud-text">SYS.ONLINE</div>
+        <div class="hud-line"></div>
+        <div class="hud-text">LAT: 37.4562</div>
+    </div>
+    <div class="hud-decoration hud-tr">
+        <div class="hud-text">SECURE: TRUE</div>
+        <div class="hud-line"></div>
+        <div class="hud-text">LNG: 126.7052</div>
+    </div>
+    <div class="hud-decoration hud-bl">
+        <div class="hud-text">ID: JAENACT</div>
+    </div>
+    <div class="hud-decoration hud-br">
+        <div class="hud-text">V.2.5.0</div>
     </div>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">Jaenact</a>
+    <!-- Noise Overlay -->
+    <div class="noise"></div>
+    
+    <!-- Gradient Orbs -->
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">Jaenact</a>
             <div class="nav-links">
-                <a href="#about" class="nav-item">About</a>
-                <a href="#skills" class="nav-item">Skills</a>
-                <a href="#experience" class="nav-item">Experience</a>
-                <a href="#projects" class="nav-item">Projects</a>
-                <a href="#contact" class="nav-item">Contact</a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <i class="ph ph-moon"></i>
+                <a href="#about">About</a>
+                <a href="#cve">CVE</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+                    <i class="ph ph-sun"></i>
                 </button>
-                <a href="https://github.com/Jaenact" target="_blank" class="btn-primary magnetic-btn">
-                    <i class="ph ph-github-logo"></i> GitHub
+                <a href="https://github.com/Jaenact" target="_blank" class="nav-cta">
+                    <i class="ph ph-github-logo"></i>
+                    <span>GitHub</span>
                 </a>
             </div>
         </div>
     </nav>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h1 class="stagger-text">
-                    Hi, I'm <span class="text-gradient">Jaenact</span>
-                </h1>
-                <p class="fade-in-up delay-1 hero-desc">
-                    <span class="typing-text" id="typingText"></span><br>
-                    경험을 쌓고 있는 연구원입니다.<br>
-                    <span class="sub-text">학습 및 연구 내용을 GitHub에 기록하고 있습니다.</span>
-                </p>
-            </div>
-            <div class="hero-visual fade-in-up delay-2">
-                <div class="floating-card card-1 magnetic-card">
-                    <div class="card-icon"><i class="ph ph-shield-check"></i></div>
-                    <div class="card-text">Security</div>
+                <div class="hero-text">
+                    <h1 class="hero-title animate-in">
+                        <span class="hero-name glitch" data-text="Jaenact">Jaenact</span>
+                    </h1>
+                    <p class="hero-subtitle animate-in delay-1">Security Researcher</p>
+                    <p class="hero-desc animate-in delay-2">
+                        <span class="typing-wrapper">
+                            <span class="typing-text" id="typingText"></span>
+                            <span class="cursor">|</span>
+                        </span>
+                    </p>
                 </div>
-                <div class="floating-card card-2 magnetic-card">
-                    <div class="card-icon"><i class="ph ph-magnifying-glass"></i></div>
-                    <div class="card-text">Analysis</div>
-                </div>
-                <div class="floating-card card-3 magnetic-card">
-                    <div class="card-icon"><i class="ph ph-cpu"></i></div>
-                    <div class="card-text">System</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section-padding">
-            <div class="container">
-                <h2 class="section-title scroll-reveal">Education</h2>
-                <div class="card-list">
-                    <div class="card-item scroll-reveal tilt-card">
-                        <div class="card-date">2023.03 ~</div>
-                        <div class="card-content">
-                            <h3>가천대학교 컴퓨터공학부</h3>
-                            <p>스마트보안전공 재학</p>
+                
+                <div class="hero-card-wrapper animate-in delay-3">
+                    <div class="hero-card">
+                        <div class="hero-card-glow"></div>
+                        <div class="hero-card-scan"></div>
+                        <div class="hero-card-content">
+                            <div class="hero-card-core">
+                                <div class="core-pulse"></div>
+                                <div class="core-icon">
+                                    <i class="ph ph-shield-check"></i>
+                                </div>
+                            </div>
+                            <div class="hero-card-info">
+                                <span class="hero-card-label">View Projects</span>
+                                <i class="ph ph-arrow-right hero-card-arrow"></i>
+                            </div>
                         </div>
-                        <span>Docker</span>
-                        <span>Linux</span>
-                        <span>Web Dev</span>
-                    </div>
-                </div>
-                <div class="skill-card scroll-reveal delay-4">
-                    <i class="ph ph-brain skill-icon"></i>
-                    <h3>Focus Areas</h3>
-                    <div class="skill-tags">
-                        <span>Web Security</span>
-                        <span>Binary Analysis</span>
-                        <span>System Analysis</span>
-                        <span>CTF</span>
                     </div>
                 </div>
             </div>
+            
+            <div class="scroll-indicator animate-in delay-4">
+                <div class="scroll-line"></div>
             </div>
         </section>
 
-        <section id="experience" class="section-padding">
+        <!-- About Section -->
+        <section id="about" class="section">
             <div class="container">
-                <h2 class="section-title scroll-reveal">Experience</h2>
-                <div class="bento-grid">
-                    <div class="bento-item item-large scroll-reveal tilt-card">
-                        <div class="bento-content">
-                            <span class="tag">Research</span>
-                            <h3>CPS LAB</h3>
-                            <p class="role">Undergraduate Researcher</p>
-                            <p class="period">2024.01 ~</p>
+                <div class="section-header">
+                    <span class="section-label animate-on-scroll">Education</span>
+                    <h2 class="section-title animate-on-scroll">Background</h2>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="glass-card about-card animate-on-scroll">
+                        <div class="about-card-header">
+                            <div class="about-icon">
+                                <i class="ph ph-graduation-cap"></i>
+                            </div>
+                            <span class="about-date">2023.03 ~</span>
                         </div>
-                        <div class="bento-visual visual-research">
-                            <i class="ph ph-flask visual-icon"></i>
-                        </div>
+                        <h3 class="about-title">가천대학교</h3>
+                        <p class="about-subtitle">컴퓨터공학부 스마트보안전공</p>
                     </div>
-
-                    <div class="bento-item item-medium scroll-reveal tilt-card">
-                        <div class="bento-content">
-                            <span class="tag">Club</span>
-                            <h3>Pay1oad</h3>
-                            <p class="role">Security Club Member</p>
-                            <p class="period">2023.03 ~ 2024.03 / 2025.03 ~</p>
-                        </div>
-                        <div class="bento-visual visual-security">
-                            <i class="ph ph-lock-key visual-icon"></i>
-                        </div>
-                    </div>
-
-                    <div class="bento-item item-medium scroll-reveal tilt-card">
-                        <div class="bento-content">
-                            <span class="tag">Team</span>
-                            <h3>정보보안팀</h3>
-                            <p class="role">비공개</p>
-                        </div>
-                        <div class="bento-visual visual-lock">
-                            <i class="ph ph-eye-closed visual-icon"></i>
+                    
+                    <div class="glass-card focus-card animate-on-scroll delay-1">
+                        <h3 class="focus-title">Focus Areas</h3>
+                        <div class="focus-tags">
+                            <span class="focus-tag">Vulnerability Research</span>
+                            <span class="focus-tag">Binary Analysis</span>
+                            <span class="focus-tag">System Security</span>
+                            <span class="focus-tag">CTF</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="section-padding bg-grey">
+        <!-- CVE Section -->
+        <section id="cve" class="section">
             <div class="container">
-                <h2 class="section-title scroll-reveal">Projects</h2>
+                <div class="section-header">
+                    <span class="section-label animate-on-scroll">Security Research</span>
+                    <h2 class="section-title animate-on-scroll">CVE Discoveries</h2>
+                </div>
+                
+                <div class="cve-grid">
+                    <!-- CVE-2025-66216 -->
+                    <a href="#" class="glass-card cve-card animate-on-scroll">
+                        <div class="cve-glow"></div>
+                        <div class="cve-header">
+                            <span class="cve-id">CVE-2025-66216</span>
+                            <span class="cve-severity critical">Critical</span>
+                        </div>
+                        <h3 class="cve-title">AIS::Message RCE</h3>
+                        <p class="cve-desc">AIS 메시지 파싱 중 힙 버퍼 오버플로우로 인한 원격 코드 실행(RCE)</p>
+                        <div class="cve-tags">
+                            <span>RCE</span>
+                            <span>Heap Overflow</span>
+                        </div>
+                        <div class="cve-arrow">
+                            <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                    </a>
+                    
+                    <!-- CVE-2025-66217 -->
+                    <a href="#" class="glass-card cve-card animate-on-scroll delay-1">
+                        <div class="cve-glow"></div>
+                        <div class="cve-header">
+                            <span class="cve-id">CVE-2025-66217</span>
+                            <span class="cve-severity critical">Critical</span>
+                        </div>
+                        <h3 class="cve-title">MQTT Packet Integer Underflow</h3>
+                        <p class="cve-desc">MQTT 패킷 파싱 시 정수 언더플로우가 힙 버퍼 오버플로우로 연결</p>
+                        <div class="cve-tags">
+                            <span>Heap Overflow</span>
+                            <span>Underflow</span>
+                        </div>
+                        <div class="cve-arrow">
+                            <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                    </a>
+
+                    <!-- CVE-2025-67268 -->
+                    <a href="#" class="glass-card cve-card animate-on-scroll delay-2">
+                        <div class="cve-glow"></div>
+                        <div class="cve-header">
+                            <span class="cve-id">CVE-2025-67268</span>
+                            <span class="cve-severity high">High</span>
+                        </div>
+                        <h3 class="cve-title">NMEA2000 OOB Write</h3>
+                        <p class="cve-desc">검증되지 않은 위성 수(Satellite Count)로 인한 힙 기반 OOB 쓰기</p>
+                        <div class="cve-tags">
+                            <span>OOB Write</span>
+                            <span>NMEA2000</span>
+                        </div>
+                        <div class="cve-arrow">
+                            <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                    </a>
+
+                    <!-- CVE-2025-67269 -->
+                    <a href="#" class="glass-card cve-card animate-on-scroll delay-3">
+                        <div class="cve-glow"></div>
+                        <div class="cve-header">
+                            <span class="cve-id">CVE-2025-67269</span>
+                            <span class="cve-severity high">High</span>
+                        </div>
+                        <h3 class="cve-title">GPSD CPU Exhaustion DoS</h3>
+                        <p class="cve-desc">NAVCOM 패킷 파싱 중 정수 언더플로우로 인한 CPU 고갈 및 거부(DoS)</p>
+                        <div class="cve-tags">
+                            <span>DoS</span>
+                            <span>Integer Underflow</span>
+                        </div>
+                        <div class="cve-arrow">
+                            <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label animate-on-scroll">Career</span>
+                    <h2 class="section-title animate-on-scroll">Experience</h2>
+                </div>
+                
+                <div class="exp-grid">
+                    <div class="glass-card exp-card exp-featured animate-on-scroll">
+                        <div class="exp-badge">Research</div>
+                        <div class="exp-icon">
+                            <i class="ph ph-flask"></i>
+                        </div>
+                        <h3 class="exp-title">CPS LAB</h3>
+                        <p class="exp-role">Undergraduate Researcher</p>
+                        <span class="exp-period">2024.01 ~ Present</span>
+                    </div>
+                    
+                    <div class="glass-card exp-card animate-on-scroll delay-1">
+                        <div class="exp-badge">Club</div>
+                        <div class="exp-icon">
+                            <i class="ph ph-lock-key"></i>
+                        </div>
+                        <h3 class="exp-title">Pay1oad</h3>
+                        <p class="exp-role">Security Club</p>
+                        <span class="exp-period">2023 ~ 2024 / 2025 ~</span>
+                    </div>
+                    
+                    <div class="glass-card exp-card animate-on-scroll delay-2">
+                        <div class="exp-badge">Team</div>
+                        <div class="exp-icon">
+                            <i class="ph ph-eye-closed"></i>
+                        </div>
+                        <h3 class="exp-title">정보보안팀</h3>
+                        <p class="exp-role">비공개</p>
+                        <span class="exp-period">—</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label animate-on-scroll">Portfolio</span>
+                    <h2 class="section-title animate-on-scroll">Projects</h2>
+                </div>
+                
                 <div class="projects-grid">
-                    <div class="project-card scroll-reveal magnetic-item" data-project="1">
+                    <div class="glass-card project-card animate-on-scroll" data-project="1">
                         <div class="project-header">
-                            <i class="ph ph-github-logo"></i>
-                            <span class="project-status">Active</span>
+                            <i class="ph ph-folder-notch-open"></i>
+                            <span class="project-status active">Active</span>
                         </div>
-                        <h3>Security Research</h3>
-                        <p>보안 취약점 분석 및 연구 내용을 정리한 저장소</p>
-                        <div class="project-tech">
+                        <h3 class="project-title">Security Research</h3>
+                        <p class="project-desc">보안 취약점 분석 및 연구 내용 저장소</p>
+                        <div class="project-tags">
                             <span>Python</span>
                             <span>Security</span>
                         </div>
                     </div>
-                    <div class="project-card scroll-reveal magnetic-item delay-1" data-project="2">
+                    
+                    <div class="glass-card project-card animate-on-scroll delay-1" data-project="2">
                         <div class="project-header">
-                            <i class="ph ph-github-logo"></i>
-                            <span class="project-status">Active</span>
+                            <i class="ph ph-folder-notch-open"></i>
+                            <span class="project-status active">Active</span>
                         </div>
-                        <h3>CTF Writeups</h3>
-                        <p>참여한 CTF 대회의 풀이 및 학습 기록</p>
-                        <div class="project-tech">
-                            <span>Writeups</span>
+                        <h3 class="project-title">CTF Writeups</h3>
+                        <p class="project-desc">CTF 대회 풀이 및 학습 기록</p>
+                        <div class="project-tags">
                             <span>CTF</span>
+                            <span>Writeups</span>
                         </div>
                     </div>
-                    <div class="project-card scroll-reveal magnetic-item delay-2" data-project="3">
+                    
+                    <div class="glass-card project-card animate-on-scroll delay-2" data-project="3">
                         <div class="project-header">
-                            <i class="ph ph-github-logo"></i>
+                            <i class="ph ph-folder-notch-open"></i>
                             <span class="project-status">Archive</span>
                         </div>
-                        <h3>Security Tools</h3>
-                        <p>보안 분석을 위한 자동화 도구 모음</p>
-                        <div class="project-tech">
+                        <h3 class="project-title">Security Tools</h3>
+                        <p class="project-desc">보안 분석 자동화 도구</p>
+                        <div class="project-tags">
                             <span>Automation</span>
                             <span>Tools</span>
                         </div>
@@ -203,38 +332,45 @@
             </div>
         </section>
 
-        <section id="activities" class="section-padding">
+        <!-- Activities Section -->
+        <section id="activities" class="section">
             <div class="container">
-                <h2 class="section-title scroll-reveal">Activities & Awards</h2>
-                <div class="grid-2-col">
-                    <div class="col-group">
-                        <h3 class="col-title scroll-reveal"><i class="ph ph-trophy"></i> Activities</h3>
-                        <ul class="activity-list">
-                            <li class="scroll-reveal delay-1 magnetic-item">
+                <div class="section-header">
+                    <span class="section-label animate-on-scroll">Achievements</span>
+                    <h2 class="section-title animate-on-scroll">Activities & Awards</h2>
+                </div>
+                
+                <div class="activities-grid">
+                    <div class="activities-col">
+                        <h3 class="activities-heading animate-on-scroll">
+                            <i class="ph ph-trophy"></i>
+                            Activities
+                        </h3>
+                        <ul class="activities-list">
+                            <li class="glass-card activity-item animate-on-scroll">
                                 <span class="activity-name">화이트햇 스쿨 1기</span>
                             </li>
-                            <li class="scroll-reveal delay-2 magnetic-item">
+                            <li class="glass-card activity-item animate-on-scroll delay-1">
                                 <span class="activity-name">오픈소스 컨트리뷰션 아카데미 2025</span>
-                                <span class="activity-desc">Project Discovery 장려상 (정보통신산업진흥원장상)</span>
+                                <span class="activity-award">Project Discovery 장려상</span>
                             </li>
-                            <li class="scroll-reveal delay-3 magnetic-item">
-                                <span class="activity-name">경상남도 남명학사 제8대 사생자율회 이음</span>
-                                <span class="activity-desc">생활부장</span>
-                            </li>
-                            <li class="scroll-reveal delay-4 magnetic-item">
-                                <span class="activity-name">경상남도 남명학사 제7대 사생자율회 라온</span>
-                                <span class="activity-desc">편집부장</span>
+                            <li class="glass-card activity-item animate-on-scroll delay-2">
+                                <span class="activity-name">경상남도 남명학사 사생자율회</span>
+                                <span class="activity-desc">제8대 이음 생활부장 · 제7대 라온 편집부장</span>
                             </li>
                         </ul>
                     </div>
-
-                    <div class="col-group">
-                        <h3 class="col-title scroll-reveal"><i class="ph ph-flag-banner"></i> CTF</h3>
-                        <ul class="activity-list">
-                            <li class="scroll-reveal delay-1 magnetic-item">
+                    
+                    <div class="activities-col">
+                        <h3 class="activities-heading animate-on-scroll">
+                            <i class="ph ph-flag-banner"></i>
+                            CTF
+                        </h3>
+                        <ul class="activities-list">
+                            <li class="glass-card activity-item animate-on-scroll">
                                 <span class="activity-name">AI해킹 방어 대회</span>
                             </li>
-                            <li class="scroll-reveal delay-2 magnetic-item">
+                            <li class="glass-card activity-item animate-on-scroll delay-1">
                                 <span class="activity-name">HACKSIUM BUSAN 2025</span>
                                 <span class="activity-desc">해킹 방어 대회</span>
                             </li>
@@ -244,24 +380,36 @@
             </div>
         </section>
 
-        <section id="contact" class="section-padding bg-grey">
+        <!-- Contact Section -->
+        <section id="contact" class="section">
             <div class="container">
-                <h2 class="section-title scroll-reveal">Get In Touch</h2>
+                <div class="section-header center">
+                    <span class="section-label animate-on-scroll">Get in Touch</span>
+                    <h2 class="section-title animate-on-scroll">Contact</h2>
+                </div>
+                
                 <div class="contact-grid">
-                    <div class="contact-card scroll-reveal tilt-card" id="emailCard">
-                        <i class="ph ph-envelope-simple contact-icon"></i>
-                        <h3>Email</h3>
-                        <p id="emailText">contact@jaenact.dev</p>
-                        <button class="copy-btn" id="copyEmail">
-                            <i class="ph ph-copy"></i> Copy
+                    <div class="glass-card contact-card animate-on-scroll">
+                        <div class="contact-icon">
+                            <i class="ph ph-envelope-simple"></i>
+                        </div>
+                        <h3 class="contact-title">Email</h3>
+                        <p class="contact-value" id="emailText">jaenact@gmail.com</p>
+                        <button class="contact-btn" id="copyEmail">
+                            <i class="ph ph-copy"></i>
+                            <span>Copy</span>
                         </button>
                     </div>
-                    <div class="contact-card scroll-reveal tilt-card delay-1">
-                        <i class="ph ph-github-logo contact-icon"></i>
-                        <h3>GitHub</h3>
-                        <p>@Jaenact</p>
-                        <a href="https://github.com/Jaenact" target="_blank" class="contact-link">
-                            Visit <i class="ph ph-arrow-up-right"></i>
+                    
+                    <div class="glass-card contact-card animate-on-scroll delay-1">
+                        <div class="contact-icon">
+                            <i class="ph ph-github-logo"></i>
+                        </div>
+                        <h3 class="contact-title">GitHub</h3>
+                        <p class="contact-value">@Jaenact</p>
+                        <a href="https://github.com/Jaenact" target="_blank" class="contact-btn primary">
+                            <span>Visit</span>
+                            <i class="ph ph-arrow-up-right"></i>
                         </a>
                     </div>
                 </div>
@@ -269,32 +417,26 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Jaenact. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/Jaenact" target="_blank" class="magnetic-link">
-                    <i class="ph ph-github-logo"></i> GitHub
-                </a>
-            </div>
+            <p class="footer-text">&copy; 2025 Jaenact. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Toast Notification -->
+    <!-- Toast -->
     <div class="toast" id="toast">
         <i class="ph ph-check-circle"></i>
-        <span id="toastMessage">Copied to clipboard!</span>
+        <span id="toastMessage">복사되었습니다!</span>
     </div>
 
-    <!-- Project Modal -->
+    <!-- Modal -->
     <div class="modal" id="projectModal">
+        <div class="modal-overlay"></div>
         <div class="modal-content">
             <button class="modal-close" id="modalClose">
                 <i class="ph ph-x"></i>
             </button>
-            <div class="modal-body" id="modalBody">
-                <!-- Content will be injected by JS -->
-            </div>
+            <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
 
