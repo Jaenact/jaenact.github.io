@@ -42,19 +42,23 @@
     /* Effects */
     --glass: blur(12px);
     --easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+    
+    /* Component Specific */
+    --nav-bg: rgba(3, 3, 5, 0.6);
 }
 
 /* Light Theme (Preserved but optimized) */
 [data-theme="light"] {
     --bg: #ffffff;
     --bg-secondary: #f9fafb;
-    --surface: rgba(0, 0, 0, 0.02);
-    --surface-hover: rgba(0, 0, 0, 0.04);
-    --border: rgba(0, 0, 0, 0.06);
-    --border-hover: rgba(0, 0, 0, 0.12);
+    --surface: rgba(0, 0, 0, 0.04);
+    --surface-hover: rgba(0, 0, 0, 0.06);
+    --border: rgba(0, 0, 0, 0.1);
+    --border-hover: rgba(0, 0, 0, 0.15);
     --text-primary: #171717;
     --text-secondary: #666666;
     --text-tertiary: #a3a3a3;
+    --nav-bg: rgba(255, 255, 255, 0.7);
 }
 
 [data-theme="light"] .gradient-orb { opacity: 0.15; }
@@ -152,8 +156,9 @@ ul { list-style: none; }
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 1000;
+    z-index: 1000;
     padding: 18px 24px;
-    background: rgba(3, 3, 5, 0.6);
+    background: var(--nav-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
