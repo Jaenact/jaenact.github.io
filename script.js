@@ -148,4 +148,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    // ====== COPY MAIL & TOAST ======
+    const copyEmailBtn = document.getElementById('copyEmail');
+    const emailText = document.getElementById('emailText');
+    const toast = document.getElementById('toast');
+
+    if (copyEmailBtn && emailText && toast) {
+        copyEmailBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(emailText.innerText).then(() => {
+                showToast();
+            });
+        });
+    }
+
+    function showToast() {
+        // Reset animation
+        toast.classList.remove('show');
+        void toast.offsetWidth; // Trigger reflow
+        
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
 });

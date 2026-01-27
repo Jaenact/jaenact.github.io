@@ -6,8 +6,8 @@
 /* Variables */
 :root {
     /* Fonts */
-    --font-main: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-main: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
     
     /* Colors */
     --bg: #030305;
@@ -1032,4 +1032,63 @@ ul { list-style: none; }
     :root { --section-gap: 120px; }
     .hero-name { font-size: 3.5rem; }
     .hud-decoration { display: none; } /* Mobile HUD Hide */
+}
+
+/* =====================================================
+   Toast Notification (Fixed)
+   ===================================================== */
+.toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 12px 24px;
+    border-radius: 99px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+    z-index: 10000;
+    transition: transform 0.4s var(--easing), opacity 0.4s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.toast i {
+    color: var(--accent);
+    font-size: 1.25rem;
+}
+
+.toast span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* =====================================================
+   Footer (Fixed)
+   ===================================================== */
+.footer {
+    padding: 40px 0 80px; /* Added bottom padding for space */
+    border-top: 1px solid var(--border);
+    margin-top: 100px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-text {
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
 }
