@@ -124,16 +124,46 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // ====== SCROLL ANIMATION ======
+    // ====== STAGGERED SCROLL ANIMATION ======
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
+                
+                // Staggered animation for children if it's a grid/list
+                if (entry.target.classList.contains('projects-grid') || 
+                    entry.target.classList.contains('activities-list') || 
+                    entry.target.classList.contains('cve-grid')) {
+                    
+                    const children = entry.target.children;
+                    Array.from(children).forEach((child, index) => {
+                        setTimeout(() => {
+                            child.classList.add('active');
+                        }, index * 100); // 100ms delay per item
+                    });
+                }
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    document.querySelectorAll('.animate-on-scroll, .projects-grid, .activities-list, .cve-grid').forEach(el => observer.observe(el));
+
+    // ====== STICKY NAV BLUR ======
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.style.background = 'var(--nav-bg)';
+            nav.style.boxShadow = '0 10px 30px -10px rgba(0,0,0,0.1)';
+        } else {
+            nav.style.background = 'transparent'; // Clean look at top
+            nav.style.boxShadow = 'none';
+        }
+    });
 
     // ====== SMOOTH SCROLL ======
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -172,4 +202,135 @@ document.addEventListener('DOMContentLoaded', () => {
             toast.classList.remove('show');
         }, 3000);
     }
+
+    // ====== SPOTLIGHT EFFECT (Magic Glass) ======
+    const spotlightCards = document.querySelectorAll('.glass-card');
+    
+    document.addEventListener('mousemove', (e) => {
+        spotlightCards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // ====== MAGNETIC BUTTONS ======
+    const magneticBtns = document.querySelectorAll('.magnetic-btn, .btn-primary, .social-icon');
+    
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            // Magnetic Pull Strength
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
+        });
+    });
+
+    // ====== 3D TILT & GLARE ======
+    const cards = document.querySelectorAll('.project-card, .activity-item');
+    
+    // Add Glare Elements dynamically
+    cards.forEach(card => {
+        let glare = card.querySelector('.glare');
+        if (!glare) {
+            glare = document.createElement('div');
+            glare.classList.add('glare');
+            card.appendChild(glare);
+        }
+    });
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Tilt
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+            
+            // Glare Position & Opacity
+            const glare = card.querySelector('.glare');
+            if(glare) {
+                glare.style.opacity = '1';
+                glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.4) 0%, transparent 70%)`;
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            const glare = card.querySelector('.glare');
+            if(glare) glare.style.opacity = '0';
+        });
+    });
+
+    // ====== SCROLL SPY & ELASTIC SLIDER (FIXED) ======
+    const navContainer = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    let slider = document.querySelector('.nav-slider');
+
+    if (!slider && navContainer) {
+        slider = document.createElement('div');
+        slider.classList.add('nav-slider');
+        navContainer.appendChild(slider);
+    }
+
+    function moveSlider(target) {
+        if (!target || !slider) return;
+        
+        const left = target.offsetLeft;
+        const top = target.offsetTop;
+        const width = target.offsetWidth;
+        const height = target.offsetHeight;
+        
+        slider.style.opacity = '1';
+        slider.style.width = `${width}px`;
+        slider.style.height = `${height}px`;
+        slider.style.transform = `translate(${left}px, ${top}px)`;
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', (e) => moveSlider(e.target));
+    });
+
+    navContainer.addEventListener('mouseleave', () => {
+        const active = document.querySelector('.nav-links a.active');
+        if (active) moveSlider(active);
+        else slider.style.opacity = '0';
+    });
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= (sectionTop - 300)) current = section.getAttribute('id');
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) link.classList.add('active');
+        });
+
+        const activeLink = document.querySelector('.nav-links a.active');
+        if (activeLink) moveSlider(activeLink);
+    });
+
+    setTimeout(() => {
+        const active = document.querySelector('.nav-links a.active');
+        if (active) moveSlider(active);
+    }, 100);
+
 });
