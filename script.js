@@ -73,12 +73,47 @@ document.addEventListener('DOMContentLoaded', () => {
     updateThemeIcon(savedTheme);
 
     if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
+        themeToggle.addEventListener('click', (e) => {
             const current = html.getAttribute('data-theme');
             const next = current === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            updateThemeIcon(next);
+
+            // View Transition API (Circular Reveal)
+            if (!document.startViewTransition) {
+                // Fallback
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                updateThemeIcon(next);
+                return;
+            }
+
+            const x = e.clientX;
+            const y = e.clientY;
+            const endRadius = Math.hypot(
+                Math.max(x, innerWidth - x),
+                Math.max(y, innerHeight - y)
+            );
+
+            const transition = document.startViewTransition(() => {
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                updateThemeIcon(next);
+            });
+
+            transition.ready.then(() => {
+                document.documentElement.animate(
+                    {
+                        clipPath: [
+                            `circle(0px at ${x}px ${y}px)`,
+                            `circle(${endRadius}px at ${x}px ${y}px)`
+                        ]
+                    },
+                    {
+                        duration: 500,
+                        easing: "ease-in-out",
+                        pseudoElement: "::view-transition-new(root)"
+                    }
+                );
+            });
         });
     }
 
@@ -333,4 +368,66 @@ document.addEventListener('DOMContentLoaded', () => {
         if (active) moveSlider(active);
     }, 100);
 
+
+    // ====== LENIS SMOOTH SCROLL (Momentum) ======
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // ====== FLUID CUSTOM CURSOR ======
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+
+    if (cursorDot && cursorOutline && window.matchMedia("(pointer: fine)").matches) {
+        let mouseX = 0;
+        let mouseY = 0;
+        let outlineX = 0;
+        let outlineY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Dot moves instantly
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+            
+            // Show cursor on first move
+            cursorDot.style.display = 'block';
+            cursorOutline.style.display = 'block';
+        });
+
+        const animateCursor = () => {
+            // Lerp for smooth following
+            outlineX += (mouseX - outlineX) * 0.15; // Speed factor
+            outlineY += (mouseY - outlineY) * 0.15;
+
+            cursorOutline.style.left = `${outlineX}px`;
+            cursorOutline.style.top = `${outlineY}px`;
+
+            requestAnimationFrame(animateCursor);
+        };
+        animateCursor();
+
+        // Magnetic Interactions
+        const links = document.querySelectorAll('a, button, .magnetic-btn');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovering-link');
+                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            });
+            link.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering-link');
+                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+            });
+        });
+    }
 });

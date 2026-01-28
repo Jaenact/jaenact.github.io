@@ -1232,3 +1232,82 @@ ul { list-style: none; }
     transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: transform;
 }
+
+/* =====================================================
+   Ultra Premium Features
+   ===================================================== */
+
+/* 1. Lenis Smooth Scroll */
+html.lenis {
+    height: auto;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* 2. Fluid Custom Cursor */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    display: none; /* Hidden on mobile by default */
+}
+
+@media (pointer: fine) {
+    .cursor-dot {
+        display: block;
+        width: 8px; height: 8px;
+        background: var(--accent);
+    }
+    .cursor-outline {
+        display: block;
+        width: 40px; height: 40px;
+        border: 1px solid var(--text-tertiary);
+        transition: width 0.2s, height 0.2s, background-color 0.2s;
+    }
+}
+
+/* Cursor Hover States */
+body.hovering-link .cursor-outline {
+    width: 60px; height: 60px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: transparent;
+    backdrop-filter: blur(2px);
+}
+
+/* 3. Cinematic Text Reveal */
+.reveal-text {
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.reveal-text span {   
+    display: block; 
+    transform: translateY(110%);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-text.active span {
+    transform: translateY(0);
+}
+
+/* View Transition Fallback (Optional) */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
