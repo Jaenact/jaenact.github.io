@@ -382,52 +382,116 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(raf);
 
-    // ====== FLUID CUSTOM CURSOR ======
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-
-    if (cursorDot && cursorOutline && window.matchMedia("(pointer: fine)").matches) {
-        let mouseX = 0;
-        let mouseY = 0;
-        let outlineX = 0;
-        let outlineY = 0;
-
+    // ====== INTERACTIVE GRID (Flashlight Effect) ======
+    const bgGrid = document.querySelector('.bg-grid');
+    if (bgGrid) {
         window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            // Dot moves instantly
-            cursorDot.style.left = `${mouseX}px`;
-            cursorDot.style.top = `${mouseY}px`;
-            
-            // Show cursor on first move
-            cursorDot.style.display = 'block';
-            cursorOutline.style.display = 'block';
+            const x = e.clientX;
+            const y = e.clientY;
+            bgGrid.style.setProperty('--mouse-x', `${x}px`);
+            bgGrid.style.setProperty('--mouse-y', `${y}px`);
         });
+    }
 
-        const animateCursor = () => {
-            // Lerp for smooth following
-            outlineX += (mouseX - outlineX) * 0.15; // Speed factor
-            outlineY += (mouseY - outlineY) * 0.15;
+    // ====== LOADING SCREEN (Minimal) ======
+    const loader = document.getElementById('loader');
+    
+    if (loader) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1500); // Short and clean
+        });
+    }
 
-            cursorOutline.style.left = `${outlineX}px`;
-            cursorOutline.style.top = `${outlineY}px`;
+    // ====== SKILL BARS ANIMATION ======
+    const skillFills = document.querySelectorAll('.skill-fill');
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const fill = entry.target;
+                const percent = fill.getAttribute('data-percent');
+                fill.style.width = `${percent}%`;
+                fill.classList.add('animated');
+                skillObserver.unobserve(fill);
+            }
+        });
+    }, { threshold: 0.5 });
 
-            requestAnimationFrame(animateCursor);
-        };
-        animateCursor();
+    skillFills.forEach(fill => skillObserver.observe(fill));
 
-        // Magnetic Interactions
-        const links = document.querySelectorAll('a, button, .magnetic-btn');
-        links.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                document.body.classList.add('hovering-link');
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            });
-            link.addEventListener('mouseleave', () => {
-                document.body.classList.remove('hovering-link');
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+    // ====== PARALLAX BACKGROUND ORBS ======
+    const orbs = document.querySelectorAll('.gradient-orb');
+    if (orbs.length > 0) {
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 30;
+            const y = (e.clientY / window.innerHeight - 0.5) * 30;
+            
+            orbs.forEach((orb, index) => {
+                const factor = (index + 1) * 0.5;
+                orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
             });
         });
     }
+
+    // ====== BUTTON RIPPLE EFFECT ======
+    const rippleButtons = document.querySelectorAll('.contact-btn, .nav-cta');
+    rippleButtons.forEach(btn => {
+        btn.style.position = 'relative';
+        btn.style.overflow = 'hidden';
+        
+        btn.addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+            ripple.style.left = e.clientX - rect.left - rect.width / 2 + 'px';
+            ripple.style.top = e.clientY - rect.top - rect.height / 2 + 'px';
+            
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
+    // ====== SCROLL INDICATOR FADE ======
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.visibility = 'hidden';
+            } else {
+                scrollIndicator.style.opacity = '0.6';
+                scrollIndicator.style.visibility = 'visible';
+            }
+        });
+    }
+
+    // ====== EASTER EGG: Console Message ======
+    console.log('%c🛡️ Welcome, Security Researcher!', 'font-size: 24px; font-weight: bold; color: #3b82f6;');
+    console.log('%cLooking for vulnerabilities? Try the Konami code! ↑↑↓↓←→←→BA', 'color: #949494;');
+
+    // Konami Code Easter Egg
+    let konamiCode = [];
+    const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+    
+    document.addEventListener('keydown', (e) => {
+        konamiCode.push(e.code);
+        konamiCode = konamiCode.slice(-10);
+        
+        if (konamiCode.join(',') === konamiSequence.join(',')) {
+            document.body.classList.toggle('hacker-mode');
+            console.log('%c🎉 HACKER MODE ACTIVATED!', 'font-size: 18px; color: #10b981;');
+            
+            // Visual Feedback Toast
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            if (toast && toastMessage) {
+                toastMessage.textContent = '🎮 Konami Code Activated!';
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            }
+        }
+    });
+
 });

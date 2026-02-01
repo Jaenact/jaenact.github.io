@@ -16,11 +16,29 @@
     <meta property="og:description" content="CVE 연구와 시스템 보안 분석을 중심으로 활동하는 보안 연구원">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jaenact.github.io">
+    <meta property="og:image" content="https://jaenact.github.io/og-image.png">
+    <meta property="og:locale" content="ko_KR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jaenact | Security Researcher">
+    <meta name="twitter:description" content="CVE 연구와 시스템 보안 분석을 중심으로 활동하는 보안 연구원">
+    <meta name="twitter:image" content="https://jaenact.github.io/og-image.png">
+    
+    <!-- Theme Color (for mobile browsers) -->
+    <meta name="theme-color" content="#030305" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f5f5" media="(prefers-color-scheme: light)">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://jaenact.github.io">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <!-- Fonts -->
+    <!-- Fonts (Preload for no FOUT) -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -30,10 +48,20 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> 
 </head>
 
+</head>
+
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <!-- Loading Screen (Minimal) -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-wordmark">Jaenact</div>
+            <div class="loader-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
 
     <!-- Background Grid -->
     <div class="bg-grid"></div>
@@ -125,7 +153,10 @@
             </div>
             
             <div class="scroll-indicator animate-in delay-4">
-                <div class="scroll-line"></div>
+                <span class="scroll-text">Scroll</span>
+                <div class="scroll-arrow">
+                    <i class="ph ph-caret-down"></i>
+                </div>
             </div>
         </section>
 
@@ -162,6 +193,135 @@
             </div>
         </section>
 
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label animate-on-scroll">Expertise</span>
+                    <h2 class="section-title animate-on-scroll">Skills</h2>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="glass-card skill-card animate-on-scroll">
+                        <h3 class="skill-category">
+                            <i class="ph ph-bug"></i>
+                            Vulnerability Research
+                        </h3>
+                        <div class="skill-bars">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Binary Exploitation</span>
+                                    <span class="skill-percent">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-percent="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Reverse Engineering</span>
+                                    <span class="skill-percent">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-percent="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Fuzzing</span>
+                                    <span class="skill-percent">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-percent="80"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card skill-card animate-on-scroll delay-1">
+                        <h3 class="skill-category">
+                            <i class="ph ph-code"></i>
+                            Development
+                        </h3>
+                        <div class="skill-bars">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Python</span>
+                                    <span class="skill-percent">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-percent="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">C/C++</span>
+                                    <span class="skill-percent">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-percent="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Web Security</span>
+                                    <span class="skill-percent">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-percent="75"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section id="techstack" class="section section-compact">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label animate-on-scroll">Tools & Technologies</span>
+                    <h2 class="section-title animate-on-scroll">Tech Stack</h2>
+                </div>
+                
+                <div class="tech-grid animate-on-scroll">
+                    <div class="tech-item" title="Python">
+                        <i class="ph ph-file-py"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="tech-item" title="C/C++">
+                        <i class="ph ph-file-cpp"></i>
+                        <span>C/C++</span>
+                    </div>
+                    <div class="tech-item" title="IDA Pro">
+                        <i class="ph ph-bug-beetle"></i>
+                        <span>IDA Pro</span>
+                    </div>
+                    <div class="tech-item" title="Ghidra">
+                        <i class="ph ph-ghost"></i>
+                        <span>Ghidra</span>
+                    </div>
+                    <div class="tech-item" title="Burp Suite">
+                        <i class="ph ph-globe"></i>
+                        <span>Burp Suite</span>
+                    </div>
+                    <div class="tech-item" title="GDB/PEDA">
+                        <i class="ph ph-terminal"></i>
+                        <span>GDB</span>
+                    </div>
+                    <div class="tech-item" title="Linux">
+                        <i class="ph ph-linux-logo"></i>
+                        <span>Linux</span>
+                    </div>
+                    <div class="tech-item" title="Docker">
+                        <i class="ph ph-cube"></i>
+                        <span>Docker</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CVE Section -->
         <section id="cve" class="section">
             <div class="container">
@@ -172,7 +332,7 @@
                 
                 <div class="cve-grid">
                     <!-- CVE-2025-66216 -->
-                    <a href="#" class="glass-card cve-card animate-on-scroll">
+                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="glass-card cve-card animate-on-scroll">
                         <div class="cve-glow"></div>
                         <div class="cve-header">
                             <span class="cve-id">CVE-2025-66216</span>
@@ -190,7 +350,7 @@
                     </a>
                     
                     <!-- CVE-2025-66217 -->
-                    <a href="#" class="glass-card cve-card animate-on-scroll delay-1">
+                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="glass-card cve-card animate-on-scroll delay-1">
                         <div class="cve-glow"></div>
                         <div class="cve-header">
                             <span class="cve-id">CVE-2025-66217</span>
@@ -208,7 +368,7 @@
                     </a>
 
                     <!-- CVE-2025-67268 -->
-                    <a href="#" class="glass-card cve-card animate-on-scroll delay-2">
+                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="glass-card cve-card animate-on-scroll delay-2">
                         <div class="cve-glow"></div>
                         <div class="cve-header">
                             <span class="cve-id">CVE-2025-67268</span>
@@ -226,7 +386,7 @@
                     </a>
 
                     <!-- CVE-2025-67269 -->
-                    <a href="#" class="glass-card cve-card animate-on-scroll delay-3">
+                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="glass-card cve-card animate-on-scroll delay-3">
                         <div class="cve-glow"></div>
                         <div class="cve-header">
                             <span class="cve-id">CVE-2025-67269</span>
@@ -348,41 +508,41 @@
                 </div>
                 
                 <div class="activities-grid">
-                    <div class="activities-col">
-                        <h3 class="activities-heading animate-on-scroll">
-                            <i class="ph ph-trophy"></i>
-                            Activities
-                        </h3>
-                        <ul class="activities-list">
-                            <li class="glass-card activity-item animate-on-scroll">
-                                <span class="activity-name">화이트햇 스쿨 1기</span>
-                            </li>
-                            <li class="glass-card activity-item animate-on-scroll delay-1">
-                                <span class="activity-name">오픈소스 컨트리뷰션 아카데미 2025</span>
-                                <span class="activity-award">Project Discovery 장려상</span>
-                            </li>
-                            <li class="glass-card activity-item animate-on-scroll delay-2">
-                                <span class="activity-name">경상남도 남명학사 사생자율회</span>
-                                <span class="activity-desc">제8대 이음 생활부장 · 제7대 라온 편집부장</span>
-                            </li>
-                        </ul>
+                    <!-- Row 1: Headings -->
+                    <h3 class="activities-heading col-1 animate-on-scroll">
+                        <i class="ph ph-trophy"></i>
+                        Activities
+                    </h3>
+                    <h3 class="activities-heading col-2 animate-on-scroll">
+                        <i class="ph ph-flag-banner"></i>
+                        CTF
+                    </h3>
+
+                    <!-- Row 2 -->
+                    <div class="glass-card activity-item col-1 animate-on-scroll">
+                        <span class="activity-name">화이트햇 스쿨 1기</span>
                     </div>
-                    
-                    <div class="activities-col">
-                        <h3 class="activities-heading animate-on-scroll">
-                            <i class="ph ph-flag-banner"></i>
-                            CTF
-                        </h3>
-                        <ul class="activities-list">
-                            <li class="glass-card activity-item animate-on-scroll">
-                                <span class="activity-name">AI해킹 방어 대회</span>
-                            </li>
-                            <li class="glass-card activity-item animate-on-scroll delay-1">
-                                <span class="activity-name">HACKSIUM BUSAN 2025</span>
-                                <span class="activity-desc">해킹 방어 대회</span>
-                            </li>
-                        </ul>
+                    <div class="glass-card activity-item col-2 animate-on-scroll">
+                        <span class="activity-name">AI해킹 방어 대회</span>
                     </div>
+
+                    <!-- Row 3 -->
+                    <div class="glass-card activity-item col-1 animate-on-scroll delay-1">
+                        <span class="activity-name">오픈소스 컨트리뷰션 아카데미 2025</span>
+                        <span class="activity-award">Project Discovery 장려상</span>
+                    </div>
+                    <div class="glass-card activity-item col-2 animate-on-scroll delay-1">
+                        <span class="activity-name">HACKSIUM BUSAN 2025</span>
+                        <span class="activity-desc">해킹 방어 대회</span>
+                    </div>
+
+                    <!-- Row 4 (Left only, Right empty) -->
+                    <div class="glass-card activity-item col-1 animate-on-scroll delay-2">
+                        <span class="activity-name">경상남도 남명학사 사생자율회</span>
+                        <span class="activity-desc">제8대 이음 생활부장 · 제7대 라온 편집부장</span>
+                    </div>
+                    <!-- Empty placeholder for col-2 to maintain grid alignment -->
+                    <div class="col-2"></div>
                 </div>
             </div>
         </section>
@@ -426,7 +586,37 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="footer-text">&copy; 2025 Jaenact. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">Jaenact</span>
+                    <p class="footer-tagline">Security Researcher</p>
+                </div>
+                
+                <nav class="footer-nav">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#cve">CVE</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                
+                <div class="footer-social">
+                    <a href="https://github.com/Jaenact" target="_blank" title="GitHub">
+                        <i class="ph ph-github-logo"></i>
+                    </a>
+                    <a href="mailto:jaenact@gmail.com" title="Email">
+                        <i class="ph ph-envelope-simple"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Jaenact. All rights reserved.</p>
+                <a href="#" class="footer-resume" id="downloadCV">
+                    <i class="ph ph-file-pdf"></i>
+                    Download CV
+                </a>
+            </div>
         </div>
     </footer>
 
