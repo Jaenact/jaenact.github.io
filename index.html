@@ -41,7 +41,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="./style.css">
     
     <!-- Ultra Premium Scripts -->
@@ -507,42 +507,61 @@
                     <h2 class="section-title animate-on-scroll">Activities & Awards</h2>
                 </div>
                 
-                <div class="activities-grid">
-                    <!-- Row 1: Headings -->
-                    <h3 class="activities-heading col-1 animate-on-scroll">
-                        <i class="ph ph-trophy"></i>
-                        Activities
-                    </h3>
-                    <h3 class="activities-heading col-2 animate-on-scroll">
-                        <i class="ph ph-flag-banner"></i>
-                        CTF
-                    </h3>
-
-                    <!-- Row 2 -->
-                    <div class="glass-card activity-item col-1 animate-on-scroll">
-                        <span class="activity-name">화이트햇 스쿨 1기</span>
+                <div class="activities-container">
+                    <!-- Activities Column -->
+                    <div class="activities-column animate-on-scroll">
+                        <div class="column-header">
+                            <span class="column-icon">🏆</span>
+                            <h3>Activities</h3>
+                        </div>
+                        <div class="activities-list">
+                            <div class="activity-card">
+                                <div class="activity-dot"></div>
+                                <div class="activity-content">
+                                    <span class="activity-name">화이트햇 스쿨 1기</span>
+                                    <span class="activity-badge">KISA 보안교육</span>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <div class="activity-dot"></div>
+                                <div class="activity-content">
+                                    <span class="activity-name">오픈소스 컨트리뷰션 아카데미 2025</span>
+                                    <span class="activity-award-badge">🥉 Project Discovery 장려상</span>
+                                </div>
+                            </div>
+                            <div class="activity-card">
+                                <div class="activity-dot"></div>
+                                <div class="activity-content">
+                                    <span class="activity-name">경상남도 남명학사 사생자율회</span>
+                                    <span class="activity-role">제8대 이음 생활부장 · 제7대 라온 편집부장</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="glass-card activity-item col-2 animate-on-scroll">
-                        <span class="activity-name">AI해킹 방어 대회</span>
+                    
+                    <!-- CTF Column -->
+                    <div class="activities-column animate-on-scroll delay-1">
+                        <div class="column-header">
+                            <span class="column-icon">🚩</span>
+                            <h3>CTF Competitions</h3>
+                        </div>
+                        <div class="activities-list">
+                            <div class="activity-card ctf-card">
+                                <div class="activity-dot ctf"></div>
+                                <div class="activity-content">
+                                    <span class="activity-name">AI해킹 방어 대회</span>
+                                    <span class="activity-type">Attack/Defense</span>
+                                </div>
+                            </div>
+                            <div class="activity-card ctf-card">
+                                <div class="activity-dot ctf"></div>
+                                <div class="activity-content">
+                                    <span class="activity-name">HACKSIUM BUSAN 2025</span>
+                                    <span class="activity-type">Defense CTF</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Row 3 -->
-                    <div class="glass-card activity-item col-1 animate-on-scroll delay-1">
-                        <span class="activity-name">오픈소스 컨트리뷰션 아카데미 2025</span>
-                        <span class="activity-award">Project Discovery 장려상</span>
-                    </div>
-                    <div class="glass-card activity-item col-2 animate-on-scroll delay-1">
-                        <span class="activity-name">HACKSIUM BUSAN 2025</span>
-                        <span class="activity-desc">해킹 방어 대회</span>
-                    </div>
-
-                    <!-- Row 4 (Left only, Right empty) -->
-                    <div class="glass-card activity-item col-1 animate-on-scroll delay-2">
-                        <span class="activity-name">경상남도 남명학사 사생자율회</span>
-                        <span class="activity-desc">제8대 이음 생활부장 · 제7대 라온 편집부장</span>
-                    </div>
-                    <!-- Empty placeholder for col-2 to maintain grid alignment -->
-                    <div class="col-2"></div>
                 </div>
             </div>
         </section>
