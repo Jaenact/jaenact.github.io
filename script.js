@@ -188,6 +188,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.animate-on-scroll, .projects-grid, .activities-list, .cve-grid').forEach(el => observer.observe(el));
 
+    // ====== SECTION TITLE ANIMATIONS ======
+    const titleObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.3, rootMargin: "0px 0px -100px 0px" });
+
+    document.querySelectorAll('.section-title, .section-label').forEach(el => titleObserver.observe(el));
+
     // ====== STICKY NAV BLUR ======
     const nav = document.querySelector('.nav');
     window.addEventListener('scroll', () => {

@@ -164,29 +164,74 @@
         <section id="about" class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label animate-on-scroll">Education</span>
-                    <h2 class="section-title animate-on-scroll">Background</h2>
+                    <span class="section-label animate-on-scroll">About Me</span>
+                    <h2 class="section-title animate-on-scroll">Profile</h2>
                 </div>
                 
-                <div class="about-grid">
-                    <div class="glass-card about-card animate-on-scroll">
-                        <div class="about-card-header">
-                            <div class="about-icon">
-                                <i class="ph ph-graduation-cap"></i>
+                <div class="profile-container animate-on-scroll">
+                    <div class="profile-main">
+                        <div class="profile-intro">
+                            <div class="profile-avatar">
+                                <span class="avatar-text">J</span>
+                                <div class="avatar-ring"></div>
                             </div>
-                            <span class="about-date">2023.03 ~</span>
+                            <div class="profile-info">
+                                <h3 class="profile-name">Jaenact</h3>
+                                <p class="profile-role">Security Researcher</p>
+                                <div class="profile-status">
+                                    <span class="status-dot"></span>
+                                    <span>Open to Opportunities</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="about-title">가천대학교</h3>
-                        <p class="about-subtitle">컴퓨터공학부 스마트보안전공</p>
+                        
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">4</span>
+                                <span class="stat-label">CVEs</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <span class="stat-value">1+</span>
+                                <span class="stat-label">Years</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <span class="stat-value">CPS</span>
+                                <span class="stat-label">Lab</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="glass-card focus-card animate-on-scroll delay-1">
-                        <h3 class="focus-title">Focus Areas</h3>
-                        <div class="focus-tags">
-                            <span class="focus-tag">Vulnerability Research</span>
-                            <span class="focus-tag">Binary Analysis</span>
-                            <span class="focus-tag">System Security</span>
-                            <span class="focus-tag">CTF</span>
+                    <div class="profile-details">
+                        <div class="detail-card">
+                            <span class="detail-icon">🎓</span>
+                            <div class="detail-content">
+                                <span class="detail-title">Education</span>
+                                <span class="detail-value">가천대학교 스마트보안전공</span>
+                                <span class="detail-sub">2023.03 ~ Present</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <span class="detail-icon">🔬</span>
+                            <div class="detail-content">
+                                <span class="detail-title">Research Focus</span>
+                                <span class="detail-value">System Security & Vulnerability Research</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <span class="detail-icon">🎯</span>
+                            <div class="detail-content">
+                                <span class="detail-title">Interests</span>
+                                <div class="interest-tags">
+                                    <span>Binary Exploitation</span>
+                                    <span>Reverse Engineering</span>
+                                    <span>Fuzzing</span>
+                                    <span>CTF</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -330,76 +375,52 @@
                     <h2 class="section-title animate-on-scroll">CVE Discoveries</h2>
                 </div>
                 
-                <div class="cve-grid">
-                    <!-- CVE-2025-66216 -->
-                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="glass-card cve-card animate-on-scroll">
-                        <div class="cve-glow"></div>
-                        <div class="cve-header">
+                <div class="cve-list animate-on-scroll">
+                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="cve-row">
+                        <div class="cve-main">
                             <span class="cve-id">CVE-2025-66216</span>
-                            <span class="cve-severity critical">Critical</span>
+                            <h3 class="cve-title">AIS::Message RCE</h3>
+                            <p class="cve-desc">AIS 메시지 파싱 중 힙 버퍼 오버플로우로 인한 원격 코드 실행</p>
                         </div>
-                        <h3 class="cve-title">AIS::Message RCE</h3>
-                        <p class="cve-desc">AIS 메시지 파싱 중 힙 버퍼 오버플로우로 인한 원격 코드 실행(RCE)</p>
-                        <div class="cve-tags">
-                            <span>RCE</span>
-                            <span>Heap Overflow</span>
-                        </div>
-                        <div class="cve-arrow">
-                            <i class="ph ph-arrow-up-right"></i>
+                        <div class="cve-meta">
+                            <span class="cve-badge critical">Critical</span>
+                            <span class="cve-tag">RCE</span>
                         </div>
                     </a>
                     
-                    <!-- CVE-2025-66217 -->
-                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="glass-card cve-card animate-on-scroll delay-1">
-                        <div class="cve-glow"></div>
-                        <div class="cve-header">
+                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="cve-row">
+                        <div class="cve-main">
                             <span class="cve-id">CVE-2025-66217</span>
-                            <span class="cve-severity critical">Critical</span>
+                            <h3 class="cve-title">MQTT Packet Integer Underflow</h3>
+                            <p class="cve-desc">MQTT 패킷 파싱 시 정수 언더플로우가 힙 버퍼 오버플로우로 연결</p>
                         </div>
-                        <h3 class="cve-title">MQTT Packet Integer Underflow</h3>
-                        <p class="cve-desc">MQTT 패킷 파싱 시 정수 언더플로우가 힙 버퍼 오버플로우로 연결</p>
-                        <div class="cve-tags">
-                            <span>Heap Overflow</span>
-                            <span>Underflow</span>
-                        </div>
-                        <div class="cve-arrow">
-                            <i class="ph ph-arrow-up-right"></i>
+                        <div class="cve-meta">
+                            <span class="cve-badge critical">Critical</span>
+                            <span class="cve-tag">Heap Overflow</span>
                         </div>
                     </a>
-
-                    <!-- CVE-2025-67268 -->
-                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="glass-card cve-card animate-on-scroll delay-2">
-                        <div class="cve-glow"></div>
-                        <div class="cve-header">
+                    
+                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="cve-row">
+                        <div class="cve-main">
                             <span class="cve-id">CVE-2025-67268</span>
-                            <span class="cve-severity high">High</span>
+                            <h3 class="cve-title">NMEA2000 OOB Write</h3>
+                            <p class="cve-desc">검증되지 않은 위성 수로 인한 힙 기반 OOB 쓰기</p>
                         </div>
-                        <h3 class="cve-title">NMEA2000 OOB Write</h3>
-                        <p class="cve-desc">검증되지 않은 위성 수(Satellite Count)로 인한 힙 기반 OOB 쓰기</p>
-                        <div class="cve-tags">
-                            <span>OOB Write</span>
-                            <span>NMEA2000</span>
-                        </div>
-                        <div class="cve-arrow">
-                            <i class="ph ph-arrow-up-right"></i>
+                        <div class="cve-meta">
+                            <span class="cve-badge high">High</span>
+                            <span class="cve-tag">OOB Write</span>
                         </div>
                     </a>
-
-                    <!-- CVE-2025-67269 -->
-                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="glass-card cve-card animate-on-scroll delay-3">
-                        <div class="cve-glow"></div>
-                        <div class="cve-header">
+                    
+                    <a href="https://github.com/Jaenact/gpsd-vulnerabilities" target="_blank" class="cve-row">
+                        <div class="cve-main">
                             <span class="cve-id">CVE-2025-67269</span>
-                            <span class="cve-severity high">High</span>
+                            <h3 class="cve-title">GPSD CPU Exhaustion DoS</h3>
+                            <p class="cve-desc">NAVCOM 패킷 파싱 중 정수 언더플로우로 인한 CPU 고갈</p>
                         </div>
-                        <h3 class="cve-title">GPSD CPU Exhaustion DoS</h3>
-                        <p class="cve-desc">NAVCOM 패킷 파싱 중 정수 언더플로우로 인한 CPU 고갈 및 거부(DoS)</p>
-                        <div class="cve-tags">
-                            <span>DoS</span>
-                            <span>Integer Underflow</span>
-                        </div>
-                        <div class="cve-arrow">
-                            <i class="ph ph-arrow-up-right"></i>
+                        <div class="cve-meta">
+                            <span class="cve-badge high">High</span>
+                            <span class="cve-tag">DoS</span>
                         </div>
                     </a>
                 </div>
@@ -414,35 +435,41 @@
                     <h2 class="section-title animate-on-scroll">Experience</h2>
                 </div>
                 
-                <div class="exp-grid">
-                    <div class="glass-card exp-card exp-featured animate-on-scroll">
-                        <div class="exp-badge">Research</div>
-                        <div class="exp-icon">
-                            <i class="ph ph-flask"></i>
+                <div class="exp-timeline animate-on-scroll">
+                    <div class="exp-item featured">
+                        <div class="exp-marker"></div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <span class="exp-type">Research</span>
+                                <span class="exp-date">2024.01 ~ Present</span>
+                            </div>
+                            <h3 class="exp-name">CPS LAB</h3>
+                            <p class="exp-role">Undergraduate Researcher</p>
                         </div>
-                        <h3 class="exp-title">CPS LAB</h3>
-                        <p class="exp-role">Undergraduate Researcher</p>
-                        <span class="exp-period">2024.01 ~ Present</span>
                     </div>
                     
-                    <div class="glass-card exp-card animate-on-scroll delay-1">
-                        <div class="exp-badge">Club</div>
-                        <div class="exp-icon">
-                            <i class="ph ph-lock-key"></i>
+                    <div class="exp-item">
+                        <div class="exp-marker"></div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <span class="exp-type">Club</span>
+                                <span class="exp-date">2023 ~ 2024 / 2025 ~</span>
+                            </div>
+                            <h3 class="exp-name">Pay1oad</h3>
+                            <p class="exp-role">Security Club Member</p>
                         </div>
-                        <h3 class="exp-title">Pay1oad</h3>
-                        <p class="exp-role">Security Club</p>
-                        <span class="exp-period">2023 ~ 2024 / 2025 ~</span>
                     </div>
                     
-                    <div class="glass-card exp-card animate-on-scroll delay-2">
-                        <div class="exp-badge">Team</div>
-                        <div class="exp-icon">
-                            <i class="ph ph-eye-closed"></i>
+                    <div class="exp-item">
+                        <div class="exp-marker"></div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <span class="exp-type">Team</span>
+                                <span class="exp-date">—</span>
+                            </div>
+                            <h3 class="exp-name">정보보안팀</h3>
+                            <p class="exp-role">비공개</p>
                         </div>
-                        <h3 class="exp-title">정보보안팀</h3>
-                        <p class="exp-role">비공개</p>
-                        <span class="exp-period">—</span>
                     </div>
                 </div>
             </div>
@@ -456,43 +483,49 @@
                     <h2 class="section-title animate-on-scroll">Projects</h2>
                 </div>
                 
-                <div class="projects-grid">
-                    <div class="glass-card project-card span-2 animate-on-scroll" data-project="1">
-                        <div class="project-header">
-                            <i class="ph ph-folder-notch-open"></i>
-                            <span class="project-status active">Active</span>
+                <div class="project-list animate-on-scroll">
+                    <div class="project-item">
+                        <div class="project-number">01</div>
+                        <div class="project-info">
+                            <h3 class="project-name">Security Research</h3>
+                            <p class="project-desc">보안 취약점 분석 및 연구 내용 저장소</p>
                         </div>
-                        <h3 class="project-title">Security Research</h3>
-                        <p class="project-desc">보안 취약점 분석 및 연구 내용 저장소</p>
-                        <div class="project-tags">
-                            <span>Python</span>
-                            <span>Security</span>
+                        <div class="project-meta">
+                            <span class="project-status active">Active</span>
+                            <div class="project-tags">
+                                <span>Python</span>
+                                <span>Security</span>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="glass-card project-card animate-on-scroll delay-1" data-project="2">
-                        <div class="project-header">
-                            <i class="ph ph-folder-notch-open"></i>
-                            <span class="project-status active">Active</span>
+                    <div class="project-item">
+                        <div class="project-number">02</div>
+                        <div class="project-info">
+                            <h3 class="project-name">CTF Writeups</h3>
+                            <p class="project-desc">CTF 대회 풀이 및 학습 기록</p>
                         </div>
-                        <h3 class="project-title">CTF Writeups</h3>
-                        <p class="project-desc">CTF 대회 풀이 및 학습 기록</p>
-                        <div class="project-tags">
-                            <span>CTF</span>
-                            <span>Writeups</span>
+                        <div class="project-meta">
+                            <span class="project-status active">Active</span>
+                            <div class="project-tags">
+                                <span>CTF</span>
+                                <span>Writeups</span>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="glass-card project-card animate-on-scroll delay-2" data-project="3">
-                        <div class="project-header">
-                            <i class="ph ph-folder-notch-open"></i>
+                    <div class="project-item">
+                        <div class="project-number">03</div>
+                        <div class="project-info">
+                            <h3 class="project-name">Security Tools</h3>
+                            <p class="project-desc">보안 분석 자동화 도구</p>
+                        </div>
+                        <div class="project-meta">
                             <span class="project-status">Archive</span>
-                        </div>
-                        <h3 class="project-title">Security Tools</h3>
-                        <p class="project-desc">보안 분석 자동화 도구</p>
-                        <div class="project-tags">
-                            <span>Automation</span>
-                            <span>Tools</span>
+                            <div class="project-tags">
+                                <span>Automation</span>
+                                <span>Tools</span>
+                            </div>
                         </div>
                     </div>
                 </div>
