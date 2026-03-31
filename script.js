@@ -203,11 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.nav');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            nav.style.background = 'var(--nav-bg)';
-            nav.style.boxShadow = '0 10px 30px -10px rgba(0,0,0,0.1)';
+            nav.classList.add('is-scrolled');
         } else {
-            nav.style.background = 'transparent'; // Clean look at top
-            nav.style.boxShadow = 'none';
+            nav.classList.remove('is-scrolled');
         }
     });
 
