@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대외비 문서가 도착했습니다</title>
+    <style>
+        body {
+            background-color: #2b2b2b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Apple SD Gothic Neo', sans-serif;
+        }
+        .envelope-wrapper {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            cursor: pointer;
+        }
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #4b5320; /* 국방색 */
+            border-radius: 0 0 8px 8px;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 110px solid #3e451a; 
+            transform-origin: top;
+            transition: transform 0.6s ease-in-out;
+            z-index: 3;
+        }
+        .stamp {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-10deg);
+            color: #b22222;
+            border: 3px solid #b22222;
+            padding: 5px 15px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            z-index: 4;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+        .letter {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 300px;
+            height: 200px;
+            background-color: #f4f1ea; 
+            background-image: repeating-linear-gradient(transparent, transparent 27px, #e0dcd3 28px);
+            border-radius: 3px;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+            padding: 35px 20px 20px 20px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            overflow-y: auto;
+        }
+        .envelope-wrapper.open .flap {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+        .envelope-wrapper.open .stamp {
+            display: none;
+        }
+        .envelope-wrapper.open .letter {
+            transform: translateY(-160px);
+            z-index: 4;
+            height: 340px; 
+        }
+        .letter-content {
+            font-size: 0.95rem;
+            line-height: 28px;
+            color: #2c2c2c;
+            white-space: pre-wrap;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope-wrapper" id="envelope">
+        <div class="flap"></div>
+        <div class="envelope"></div>
+        <div class="stamp">CONFIDENTIAL</div>
+        <div class="letter">
+            <div class="letter-content" id="letterContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // === [설정 영역] ===
+        // 아래 변수에 사전 생성한 '암호화된 페이로드'만 입력합니다. 
+        // 비밀번호는 이 파일 어디에도 저장하지 않습니다.
+        const encryptedPayload = "여기에_암호화된_문자열을_붙여넣으세요"; 
+
+        // 복호화 로직
+        const decrypt = (password, encoded) => {
+            try {
+                const textToChars = t => t.split('').map(c => c.charCodeAt(0));
+                const applySaltToChar = code => textToChars(password).reduce((a,b) => a ^ b, code);
+                const decodedStr = decodeURIComponent(atob(encoded));
+                return decodedStr.match(/.{1,2}/g)
+                    .map(hex => parseInt(hex, 16))
+                    .map(applySaltToChar)
+                    .map(charCode => String.fromCharCode(charCode))
+                    .join('');
+            } catch (e) {
+                return null;
+            }
+        };
+
+        const envelope = document.getElementById('envelope');
+        const contentElement = document.getElementById('letterContent');
+        let isOpened = false;
+
+        envelope.addEventListener('click', () => {
+            if (isOpened) return;
+
+            const inputPwd = prompt('대외비 문서입니다. 복호화 키를 입력하십시오:');
+            if (!inputPwd) return;
+            
+            const decryptedText = decrypt(inputPwd, encryptedPayload);
+            
+            // 시그니처(SEC::) 확인을 통해 올바른 비밀번호인지 검증
+            if (decryptedText && decryptedText.startsWith("SEC::")) {
+                const finalContent = decryptedText.substring(5); // 시그니처 제거
+                
+                isOpened = true;
+                envelope.classList.add('open');
+                
+                setTimeout(() => {
+                    typeWriter(finalContent, 0);
+                }, 800);
+            } else {
+                // 비밀번호가 틀리면 쓰레기 값이 나오거나 시그니처가 일치하지 않음
+                alert('복호화 실패. 키가 일치하지 않거나 인가되지 않은 접근입니다.');
+            }
+        });
+
+        function typeWriter(text, index) {
+            if (index < text.length) {
+                const char = text.charAt(index);
+                contentElement.innerHTML += char === '\n' ? '<br>' : char;
+                setTimeout(() => typeWriter(text, index + 1), 60);
+            }
+        }
+    </script>
+</body>
+</html>
